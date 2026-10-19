@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+*.py[cod]
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/inbox.json

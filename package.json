@@ -1,0 +1,36 @@
+{
+  "name": "consultant-os",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,inbox,web -c blue,magenta,green \"npm:dev:api\" \"npm:dev:inbox\" \"npm:dev:web\"",
+    "dev:api": "python -m uvicorn services.api.main:app --reload --port 8000",
+    "dev:inbox": "tsx watch services/inbox/index.ts",
+    "dev:web": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "test:python": "python -m pytest -q",
+    "start": "concurrently -k -n api,inbox,web -c blue,magenta,green \"npm:dev:api\" \"npm:dev:inbox\" \"npm:dev:web\""
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.7"
+  }
+}
